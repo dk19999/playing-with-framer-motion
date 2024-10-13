@@ -1,13 +1,16 @@
 import { useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { AnimationControls, motion, useAnimation } from "framer-motion";
 import styles from "./index.module.css";
 
 function AnimationBox({ imageSrc = "", text = "" }) {
-  const controls = useAnimation();
-  const boxRef = useRef(null);
+  const controls: AnimationControls & { isHovering?: boolean } = useAnimation();
+  const boxRef = useRef<HTMLDivElement | null>(null);
 
   const startAnimation = async () => {
-    const boxWidth = boxRef?.current.getBoundingClientRect().width;
+    if (!boxRef.current) {
+      return;
+    }
+    const boxWidth = boxRef?.current.getBoundingClientRect().width || 0;
 
     await controls.start({
       x: 0,
@@ -16,14 +19,14 @@ function AnimationBox({ imageSrc = "", text = "" }) {
     });
 
     await controls.start({
-      x: boxWidth / 1.5, 
+      x: boxWidth / 1.5,
       opacity: 1,
       transition: { duration: 1, delay: 0.1 },
       transform: "",
     });
 
     controls.set({
-      x: -boxWidth, 
+      x: -boxWidth,
       opacity: 0,
       transition: {
         delay: 0,
@@ -32,15 +35,15 @@ function AnimationBox({ imageSrc = "", text = "" }) {
     });
 
     await controls.start({
-      x: 0, 
-      opacity: 1, 
+      x: 0,
+      opacity: 1,
       transition: {
         duration: 1.5,
       },
     });
 
     if (controls.isHovering) {
-      startAnimation(); 
+      startAnimation();
     }
   };
 
@@ -50,29 +53,27 @@ function AnimationBox({ imageSrc = "", text = "" }) {
   };
 
   const handleMouseLeave = () => {
-
     controls.stop();
 
     controls.set({
-      opacity: 1, 
-      transform: "none", 
+      opacity: 1,
+      transform: "none",
     });
 
     controls.isHovering = false;
   };
 
-
   return (
     <div
-      className={styles.gridItem} 
+      className={styles.gridItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       ref={boxRef}
     >
       <motion.img
-        src={imageSrc} 
+        src={imageSrc}
         alt="Animated Icon"
-        className={styles.vehicleIcon} 
+        className={styles.vehicleIcon}
         animate={controls}
         initial={{ x: 0, opacity: 1 }}
       />
