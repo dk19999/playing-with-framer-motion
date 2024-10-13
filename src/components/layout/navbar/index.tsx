@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 import { FaAngleDown } from "react-icons/fa";
-import { FaSearch, FaCaretUp, FaCaretDown, fa } from 'react-icons/fa';
+import { FaSearch, FaCaretUp } from 'react-icons/fa';
 
 const Navbar = () => {
   return (

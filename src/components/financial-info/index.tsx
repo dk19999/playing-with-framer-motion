@@ -2,17 +2,14 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 const FinancialSection = () => {
-  // const [isHovered, setIsHovered] = useState(false);
   const [isShrinking, setIsShrinking] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [shrinkIndex, setShrinkIndex] = useState(-1);
 
   const handleMouseLeave = (index: number) => {
-    // setIsHovered(false);
     setTimeout(() => {
     setIsShrinking(true);
     setShrinkIndex(index);
-    // setHoveredIndex(-1)
     }, 500);
   };
 
