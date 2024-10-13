@@ -21,7 +21,7 @@ const Navbar = () => {
       </div>
       <div className={styles.group}>
       <div className={styles.stockInfo}>
-        <span>2.94 <span>AED</span> / +0.00% <FaCaretUp /></span>
+        <span>2.94 <span>AED</span> / +0.00% <FaCaretUp color='#D2EA8E' /></span>
       </div>
 
       <button className={styles.registerButton}>Register or Log in</button>
