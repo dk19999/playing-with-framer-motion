@@ -3,5 +3,16 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",  // Use Node.js module resolution
+    "types": ["node"],           // Include Node.js types
+    "esModuleInterop": true,     // Allow importing Node.js modules
+    "baseUrl": ".",              // Base URL for imports
+    "paths": {
+      "@/*": ["src/*"]           // Path alias for source files
+    }
+  }
 }
