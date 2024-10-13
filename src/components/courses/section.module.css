@@ -1,0 +1,36 @@
+.sectionTitle{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32.69px;
+  text-align: center;
+  
+}
+
+.boxContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  grid-gap: 20px;
+  width: 100%;
+  max-width: 1200px; 
+  padding: 20px;
+  margin: 0 auto; 
+  justify-content: center; 
+}
+
+@media (max-width: 768px) {
+  .boxContainer {
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); 
+  }
+}
+
+@media (max-width: 480px) {
+  .boxContainer {
+    grid-template-columns: 1fr; 
+    gap: 15px;
+  }
+
+  .carIcon {
+    width: 30px;
+    height: 30px;
+  }
+}
